@@ -1,0 +1,95 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #3636C9;
+    color: #0A0908;
+}
+
+header {
+    background-color: #2F2D4A;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+header p {
+    font-size: 17px;
+}
+
+.contenedor {
+    max-width: 1050px;
+    margin: 45px auto;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+}
+
+.tarjeta {
+    background-color: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    min-height: 190px;
+}
+
+.tarjeta h2 {
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+.tarjeta p {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.valor {
+    font-size: 21px;
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+.detectado {
+    color: #d97706;
+}
+
+.sin-movimiento {
+    color: #16834a;
+}
+
+.conectado {
+    color: #16834a;
+    font-weight: bold;
+}
+
+.desconectado {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #64748b;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 26px;
+    }
+
+    .contenedor {
+        margin: 20px auto;
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PathFinder IoT</title>
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>PathFinder IoT</h1>
+      <p>Sistema IoT de Monitoreo, Detección de Presencia e Iluminación Guiada para Adultos Mayores</p>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- DORMITORIO -->
+        <section class="tarjeta">
+            <h2>🚶 Dormitorio</h2>
+            <p>Detección de movimiento mediante sensor PIR</p>
+            <div id="movimientoDormitorio" class="valor">
+                Esperando datos...
+            </div>
+        </section>
+
+        <!-- PASILLO -->
+        <section class="tarjeta">
+            <h2>📡 Pasillo</h2>
+            <p>Distancia detectada por el sensor ultrasónico</p>
+            <div id="distanciaPasillo" class="valor">-- cm</div>
+        </section>
+
+        <!-- BAÑO -->
+        <section class="tarjeta">
+            <h2>📡 Baño</h2>
+            <p>Distancia detectada por el sensor ultrasónico</p>
+            <div id="distanciaBano" class="valor">-- cm</div>
+        </section>
+
+        <!-- ILUMINACIÓN -->
+        <section class="tarjeta">
+            <h2>💡 Iluminación</h2>
+            <p>Estado del sistema de iluminación guiada</p>
+            <div id="iluminacion" class="valor">
+                Esperando datos...
+            </div>
+        </section>
+
+        <!-- CONEXIÓN -->
+        <section class="tarjeta">
+            <h2>🌐 Conexión IoT</h2>
+            <p id="estadoConexion">Conectando...</p>
+
+            <p>Última actualización:</p>
+            <div id="ultimaActualizacion">--</div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Proyecto académico | Práctica Profesionalizante II</p>
+        <p>PathFinder IoT - Sistema de monitoreo inteligente</p>
+    </footer>
+
+   <script src="app.js"></script>
+
+</body>
+</html>
