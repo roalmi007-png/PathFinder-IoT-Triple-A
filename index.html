@@ -21,7 +21,7 @@
 
         <!-- DORMITORIO -->
         <section class="tarjeta">
-            <h2>🚶 Dormitorio</h2>
+            <h2>🚶<u>Dormitorio</u></h2>
             <p>Detección de movimiento mediante sensor PIR</p>
             <div id="movimientoDormitorio" class="valor">
                 Esperando datos...
@@ -30,30 +30,38 @@
 
         <!-- PASILLO -->
         <section class="tarjeta">
-            <h2>📡 Pasillo</h2>
+            <h2>📡<u>Pasillo</u></h2>
             <p>Distancia detectada por el sensor ultrasónico</p>
             <div id="distanciaPasillo" class="valor">-- cm</div>
         </section>
 
         <!-- BAÑO -->
         <section class="tarjeta">
-            <h2>📡 Baño</h2>
+            <h2>📡<u>Baño</u></h2>
             <p>Distancia detectada por el sensor ultrasónico</p>
             <div id="distanciaBano" class="valor">-- cm</div>
         </section>
 
         <!-- ILUMINACIÓN -->
         <section class="tarjeta">
-            <h2>💡 Iluminación</h2>
+            <h2>💡<u>Iluminación</u></h2>
             <p>Estado del sistema de iluminación guiada</p>
             <div id="iluminacion" class="valor">
                 Esperando datos...
             </div>
         </section>
-
+        
+         <!-- ALERTA -->
+        <section class="tarjeta tarjeta-alerta">
+           <h2>🚨<u>Alerta</u></h2>
+           <p>Monitoreo del estado general del sistema</p>
+           <div id="estadoAlerta" class="valor alerta-normal">
+            🟢 Estado normal
+           </div>
+        </section>
         <!-- CONEXIÓN -->
         <section class="tarjeta">
-            <h2>🌐 Conexión IoT</h2>
+            <h2>🌐<u> Conexión IoT</u></h2>
             <p id="estadoConexion">Conectando...</p>
 
             <p>Última actualización:</p>
