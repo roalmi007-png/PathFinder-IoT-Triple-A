@@ -3,7 +3,10 @@ const CHANNEL_ID = "3477786";
 const API_URL =
     `https://api.thingspeak.com/channels/${CHANNEL_ID}/feeds/last.json`;
 
-// Elementos de la página
+// ==========================
+// ELEMENTOS DE LA PÁGINA
+// ==========================
+
 const movimientoDormitorio =
     document.getElementById("movimientoDormitorio");
 
@@ -15,6 +18,9 @@ const distanciaBano =
 
 const iluminacion =
     document.getElementById("iluminacion");
+
+const estadoAlerta =
+    document.getElementById("estadoAlerta");
 
 const estadoConexion =
     document.getElementById("estadoConexion");
@@ -59,6 +65,13 @@ async function obtenerDatos() {
                 movimientoDormitorio.className =
                     "valor sin-movimiento";
             }
+
+        } else {
+            movimientoDormitorio.textContent =
+                "Sin datos";
+
+            movimientoDormitorio.className =
+                "valor";
         }
 
         // ==========================
@@ -69,8 +82,10 @@ async function obtenerDatos() {
 
             distanciaPasillo.textContent =
                 `${datos.field2} cm`;
+
         } else {
-            distanciaPasillo.textContent = "-- cm";
+            distanciaPasillo.textContent =
+                "-- cm";
         }
 
         // ==========================
@@ -81,8 +96,10 @@ async function obtenerDatos() {
 
             distanciaBano.textContent =
                 `${datos.field3} cm`;
+
         } else {
-            distanciaBano.textContent = "-- cm";
+            distanciaBano.textContent =
+                "-- cm";
         }
 
         // ==========================
@@ -91,19 +108,84 @@ async function obtenerDatos() {
 
         if (datos.field4 !== null && datos.field4 !== "") {
 
-            const estadoLuz = Number(datos.field4);
+            const estadoLuz =
+                Number(datos.field4);
 
             if (estadoLuz === 1) {
-                iluminacion.textContent = "Iluminación encendida";
-                iluminacion.className = "valor detectado";
+
+                iluminacion.textContent =
+                    "💡 Iluminación encendida";
+
+                iluminacion.className =
+                    "valor detectado";
 
             } else {
-                iluminacion.textContent = "Iluminación apagada";
-                iluminacion.className = "valor sin-movimiento";
+
+                iluminacion.textContent =
+                    "Iluminación apagada";
+
+                iluminacion.className =
+                    "valor sin-movimiento";
             }
 
         } else {
-            iluminacion.textContent = "Sin datos";
+
+            iluminacion.textContent =
+                "Sin datos";
+
+            iluminacion.className =
+                "valor";
+        }
+
+        // ==========================
+        // FIELD 5 - ESTADO DE ALERTA
+        // ==========================
+
+        if (datos.field5 !== null && datos.field5 !== "") {
+
+            const alerta =
+                Number(datos.field5);
+
+            if (alerta === 0) {
+
+                estadoAlerta.textContent =
+                    "🟢 Estado normal";
+
+                estadoAlerta.className =
+                    "valor alerta-normal";
+
+            } else if (alerta === 1) {
+
+                estadoAlerta.textContent =
+                    "🟡 PREAVISO - Verificar situación";
+
+                estadoAlerta.className =
+                    "valor alerta-preaviso";
+
+            } else if (alerta === 2) {
+
+                estadoAlerta.textContent =
+                    "🔴 ALERTA CRÍTICA - Requiere atención";
+
+                estadoAlerta.className =
+                    "valor alerta-critica";
+
+            } else {
+
+                estadoAlerta.textContent =
+                    "Estado de alerta desconocido";
+
+                estadoAlerta.className =
+                    "valor";
+            }
+
+        } else {
+
+            estadoAlerta.textContent =
+                "Esperando datos de alerta...";
+
+            estadoAlerta.className =
+                "valor";
         }
 
         // ==========================
@@ -113,10 +195,15 @@ async function obtenerDatos() {
         estadoConexion.textContent =
             "Conectado a ThingSpeak";
 
-        estadoConexion.className = "conectado";
+        estadoConexion.className =
+            "conectado";
 
-        // Fecha
-        const fecha = new Date(datos.created_at);
+        // ==========================
+        // ÚLTIMA ACTUALIZACIÓN
+        // ==========================
+
+        const fecha =
+            new Date(datos.created_at);
 
         ultimaActualizacion.textContent =
             fecha.toLocaleString("es-AR");
