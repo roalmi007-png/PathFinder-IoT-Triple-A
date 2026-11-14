@@ -3,6 +3,10 @@ const CHANNEL_ID = "3477786";
 const API_URL =
     `https://api.thingspeak.com/channels/${CHANNEL_ID}/feeds/last.json`;
 
+// CANAL DE CONTROL REMOTO
+const CONTROL_CHANNEL_ID = "3577409";
+const CONTROL_WRITE_API_KEY = "BXSZUN501YY5YS06";
+ 
 // ==========================
 // ELEMENTOS DE LA PÁGINA
 // ==========================
