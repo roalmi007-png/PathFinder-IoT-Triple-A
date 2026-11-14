@@ -43,13 +43,25 @@
         </section>
 
         <!-- ILUMINACIÓN -->
-        <section class="tarjeta">
-            <h2>💡<u>Iluminación</u></h2>
-            <p>Estado del sistema de iluminación guiada</p>
-            <div id="iluminacion" class="valor">
-                Esperando datos...
-            </div>
-        </section>
+      
+       <section class="tarjeta">
+         <h2>💡 Iluminación</h2>
+         <p>Estado del sistema de iluminación guiada</p>
+
+          <div id="iluminacion" class="valor">
+        Esperando datos...
+          </div>
+
+          <div class="controles-luz">
+                <button id="btnEncender" onclick="encenderLuz()">
+                 <b>Encender</b>
+                </button>
+
+                <button id="btnApagar" onclick="apagarLuz()">
+                 <b>Apagar</b>
+                </button>
+         </div>
+       </section>
         
          <!-- ALERTA -->
         <section class="tarjeta tarjeta-alerta">
