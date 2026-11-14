@@ -107,6 +107,59 @@ footer {
     color: #64748b;
 }
 
+/* CONTROLES DE ILUMINACIÓN */
+.controles-luz {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.controles-luz button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#btnEncender {
+    background-color: #16834a;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #64748b;
+}
+
+/* CONTROLES DE ILUMINACIÓN */
+.controles-luz {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.controles-luz button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#btnEncender {
+    background-color: #16834a;
+    color: white;
+}
+
+#btnApagar {
+    background-color: #d32f2f;
+    color: white;
+}
+
 @media (max-width: 600px) {
     header h1 {
         font-size: 26px;
