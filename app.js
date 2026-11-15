@@ -1,14 +1,23 @@
+// ==========================================
+// CANAL DE TELEMETRÍA
+// ==========================================
+
 const CHANNEL_ID = "3477786";
 
 const API_URL =
     `https://api.thingspeak.com/channels/${CHANNEL_ID}/feeds/last.json`;
+
 
 // ==========================================
 // CANAL DE CONTROL REMOTO
 // ==========================================
 
 const CONTROL_CHANNEL_ID = "3577409";
-const CONTROL_WRITE_API_KEY = "BXSZUN501YY5YS06";
+
+// Write API Key del canal de control
+const CONTROL_WRITE_API_KEY =
+    "BXSZUN501YY5YS06";
+
 
 // ==========================================
 // ELEMENTOS DE LA PÁGINA
@@ -35,38 +44,53 @@ const estadoConexion =
 const ultimaActualizacion =
     document.getElementById("ultimaActualizacion");
 
+
 // ==========================================
-// OBTENER DATOS DE THINGSPEAK
+// OBTENER DATOS DE TELEMETRÍA
 // ==========================================
 
 async function obtenerDatos() {
 
     try {
 
-        estadoConexion.textContent = "Conectando...";
+        estadoConexion.textContent =
+            "Conectando...";
 
-        const respuesta = await fetch(API_URL, {
-            cache: "no-store"
-        });
+        const respuesta =
+            await fetch(API_URL, {
+                cache: "no-store"
+            });
+
 
         if (!respuesta.ok) {
-            throw new Error("No se pudo conectar con ThingSpeak");
+
+            throw new Error(
+                "No se pudo conectar con ThingSpeak"
+            );
         }
 
-        const datos = await respuesta.json();
+
+        const datos =
+            await respuesta.json();
+
 
         // ==========================================
-        // FIELD 1 - DORMITORIO PIR
+        // FIELD 1 - DORMITORIO
         // ==========================================
 
-        if (datos.field1 !== null && datos.field1 !== "") {
+        if (
+            datos.field1 !== null &&
+            datos.field1 !== ""
+        ) {
 
-            const movimiento = Number(datos.field1);
+            const movimiento =
+                Number(datos.field1);
+
 
             if (movimiento > 0) {
 
                 movimientoDormitorio.textContent =
-                    "Movimiento detectado";
+                    "🚶 Movimiento detectado";
 
                 movimientoDormitorio.className =
                     "valor detectado";
@@ -82,47 +106,64 @@ async function obtenerDatos() {
 
         } else {
 
-            movimientoDormitorio.textContent = "Sin datos";
+            movimientoDormitorio.textContent =
+                "Sin datos";
 
-            movimientoDormitorio.className = "valor";
+            movimientoDormitorio.className =
+                "valor";
         }
+
 
         // ==========================================
         // FIELD 2 - PASILLO
         // ==========================================
 
-        if (datos.field2 !== null && datos.field2 !== "") {
+        if (
+            datos.field2 !== null &&
+            datos.field2 !== ""
+        ) {
 
             distanciaPasillo.textContent =
                 `${datos.field2} cm`;
 
         } else {
 
-            distanciaPasillo.textContent = "-- cm";
+            distanciaPasillo.textContent =
+                "-- cm";
         }
+
 
         // ==========================================
         // FIELD 3 - BAÑO
         // ==========================================
 
-        if (datos.field3 !== null && datos.field3 !== "") {
+        if (
+            datos.field3 !== null &&
+            datos.field3 !== ""
+        ) {
 
             distanciaBano.textContent =
                 `${datos.field3} cm`;
 
         } else {
 
-            distanciaBano.textContent = "-- cm";
+            distanciaBano.textContent =
+                "-- cm";
         }
 
+
         // ==========================================
-        // FIELD 4 - ILUMINACIÓN
+        // FIELD 4 - ILUMINACIÓN AUTOMÁTICA
         // ==========================================
 
-        if (datos.field4 !== null && datos.field4 !== "") {
+        if (
+            datos.field4 !== null &&
+            datos.field4 !== ""
+        ) {
 
             const estadoLuz =
                 Number(datos.field4);
+
 
             if (estadoLuz === 1) {
 
@@ -150,14 +191,19 @@ async function obtenerDatos() {
                 "valor";
         }
 
+
         // ==========================================
         // FIELD 5 - ESTADO DE ALERTA
         // ==========================================
 
-        if (datos.field5 !== null && datos.field5 !== "") {
+        if (
+            datos.field5 !== null &&
+            datos.field5 !== ""
+        ) {
 
             const alerta =
                 Number(datos.field5);
+
 
             if (alerta === 0) {
 
@@ -186,7 +232,7 @@ async function obtenerDatos() {
             } else {
 
                 estadoAlerta.textContent =
-                    "Estado de alerta desconocido";
+                    "Estado desconocido";
 
                 estadoAlerta.className =
                     "valor";
@@ -195,14 +241,15 @@ async function obtenerDatos() {
         } else {
 
             estadoAlerta.textContent =
-                "Esperando datos de alerta...";
+                "Esperando datos...";
 
             estadoAlerta.className =
                 "valor";
         }
 
+
         // ==========================================
-        // CONEXIÓN
+        // ESTADO DE CONEXIÓN
         // ==========================================
 
         estadoConexion.textContent =
@@ -210,6 +257,7 @@ async function obtenerDatos() {
 
         estadoConexion.className =
             "conectado";
+
 
         // ==========================================
         // ÚLTIMA ACTUALIZACIÓN
@@ -223,7 +271,7 @@ async function obtenerDatos() {
 
     } catch (error) {
 
-        console.error("Error:", error);
+        console.error(error);
 
         estadoConexion.textContent =
             "Error de conexión";
@@ -233,8 +281,9 @@ async function obtenerDatos() {
     }
 }
 
+
 // ==========================================
-// CONTROL REMOTO DE ILUMINACIÓN
+// CONTROL REMOTO
 // ==========================================
 
 async function enviarOrden(valor) {
@@ -244,20 +293,22 @@ async function enviarOrden(valor) {
         const URL_CONTROL =
             `https://api.thingspeak.com/update?api_key=${CONTROL_WRITE_API_KEY}&field1=${valor}`;
 
+
         const respuesta =
             await fetch(URL_CONTROL);
+
 
         if (!respuesta.ok) {
 
             throw new Error(
-                "No se pudo conectar con ThingSpeak"
+                "No se pudo enviar la orden"
             );
         }
+
 
         const resultado =
             await respuesta.text();
 
-        // ThingSpeak devuelve "0" cuando no acepta la actualización
 
         if (resultado.trim() === "0") {
 
@@ -266,25 +317,23 @@ async function enviarOrden(valor) {
             );
         }
 
+
         if (valor === 1) {
 
             alert(
-                "💡 Orden enviada: ENCENDER iluminación"
+                " Orden enviada: ENCENDER"
             );
 
         } else {
 
             alert(
-                "💡 Orden enviada: APAGAR iluminación"
+                " Orden enviada: APAGAR"
             );
         }
 
     } catch (error) {
 
-        console.error(
-            "Error al enviar la orden:",
-            error
-        );
+        console.error(error);
 
         alert(
             "❌ Error al enviar la orden: " +
@@ -293,8 +342,9 @@ async function enviarOrden(valor) {
     }
 }
 
+
 // ==========================================
-// BOTÓN ENCENDER
+// BOTONES
 // ==========================================
 
 function encenderIluminacion() {
@@ -302,21 +352,23 @@ function encenderIluminacion() {
     enviarOrden(1);
 }
 
-// ==========================================
-// BOTÓN APAGAR
-// ==========================================
 
 function apagarIluminacion() {
 
     enviarOrden(0);
 }
 
+
 // ==========================================
-// INICIAR APLICACIÓN
+// INICIAR
 // ==========================================
 
 obtenerDatos();
 
-// Actualizar cada 15 segundos
 
-setInterval(obtenerDatos, 15000);
+// Actualizar datos cada 15 segundos
+
+setInterval(
+    obtenerDatos,
+    15000
+);
