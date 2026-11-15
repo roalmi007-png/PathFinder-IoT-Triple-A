@@ -14,80 +14,133 @@
 
     <header>
         <h1>PathFinder IoT</h1>
-      <p>Sistema IoT de Monitoreo, Detección de Presencia e Iluminación Guiada para Adultos Mayores</p>
+        <p>
+            Sistema IoT de Monitoreo, Detección de Presencia
+            e Iluminación Guiada para Adultos Mayores
+        </p>
     </header>
 
     <main class="contenedor">
 
         <!-- DORMITORIO -->
         <section class="tarjeta">
-            <h2>🚶<u>Dormitorio</u></h2>
+            <h2>🚶 Dormitorio</h2>
             <p>Detección de movimiento mediante sensor PIR</p>
+
             <div id="movimientoDormitorio" class="valor">
                 Esperando datos...
             </div>
         </section>
 
+
         <!-- PASILLO -->
         <section class="tarjeta">
-            <h2>📡<u>Pasillo</u></h2>
+            <h2>📡 Pasillo</h2>
             <p>Distancia detectada por el sensor ultrasónico</p>
-            <div id="distanciaPasillo" class="valor">-- cm</div>
+
+            <div id="distanciaPasillo" class="valor">
+                -- cm
+            </div>
         </section>
+
 
         <!-- BAÑO -->
         <section class="tarjeta">
-            <h2>📡<u>Baño</u></h2>
+            <h2>📡 Baño</h2>
             <p>Distancia detectada por el sensor ultrasónico</p>
-            <div id="distanciaBano" class="valor">-- cm</div>
+
+            <div id="distanciaBano" class="valor">
+                -- cm
+            </div>
         </section>
 
-        <!-- ILUMINACIÓN -->
-      
-       <section class="tarjeta">
-         <h2>💡 Iluminación</h2>
-         <p>Estado del sistema de iluminación guiada</p>
 
-          <div id="iluminacion" class="valor">
-        Esperando datos...
-          </div>
+        <!-- ILUMINACIÓN AUTOMÁTICA -->
+        <section class="tarjeta">
+            <h2>💡 Iluminación automática</h2>
+            <p>Estado de la iluminación guiada del sistema</p>
 
-          <div class="controles-luz">
-                <button id="btnEncender" onclick="encenderLuz()">
-                 <b>Encender</b>
-                </button>
-
-                <button id="btnApagar" onclick="apagarLuz()">
-                 <b>Apagar</b>
-                </button>
-         </div>
-       </section>
-        
-         <!-- ALERTA -->
-        <section class="tarjeta tarjeta-alerta">
-           <h2>🚨<u>Alerta</u></h2>
-           <p>Monitoreo del estado general del sistema</p>
-           <div id="estadoAlerta" class="valor alerta-normal">
-            🟢 Estado normal
-           </div>
+            <div id="iluminacion" class="valor">
+                Esperando datos...
+            </div>
         </section>
+
+
+        <!-- ESTADO DE ALERTA -->
+        <section class="tarjeta">
+            <h2>🚨 Estado de alerta</h2>
+            <p>Monitoreo de situación prolongada en la zona</p>
+
+            <div id="estadoAlerta" class="valor">
+                Esperando datos...
+            </div>
+        </section>
+
+
+        <!-- CONTROL REMOTO -->
+        <section class="tarjeta">
+            <h2>🎛️ Control remoto</h2>
+
+            <p>
+                Actuador controlado desde la aplicación web
+            </p>
+
+            <div class="botones-control">
+
+                <button
+                    class="boton-encender"
+                    onclick="encenderIluminacion()">
+
+                    💡 Encender
+
+                </button>
+
+
+                <button
+                    class="boton-apagar"
+                    onclick="apagarIluminacion()">
+
+                    ⬛ Apagar
+
+                </button>
+
+            </div>
+        </section>
+
+
         <!-- CONEXIÓN -->
         <section class="tarjeta">
-            <h2>🌐<u> Conexión IoT</u></h2>
-            <p id="estadoConexion">Conectando...</p>
+            <h2>🌐 Conexión IoT</h2>
+
+            <p id="estadoConexion">
+                Conectando...
+            </p>
 
             <p>Última actualización:</p>
-            <div id="ultimaActualizacion">--</div>
+
+            <div id="ultimaActualizacion">
+                --
+            </div>
         </section>
 
     </main>
 
+
     <footer>
-        <p>Proyecto académico | Práctica Profesionalizante II</p>
-        <p>PathFinder IoT - Sistema de monitoreo inteligente</p>
+
+        <p>
+            Proyecto académico | Práctica Profesionalizante II
+        </p>
+
+        <p>
+            PathFinder IoT - Sistema de monitoreo inteligente
+        </p>
+
     </footer>
 
-   <script src="app.js"></script>
+
+    <script src="app.js"></script>
 
 </body>
+
 </html>
