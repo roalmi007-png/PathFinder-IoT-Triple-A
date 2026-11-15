@@ -30,8 +30,12 @@ header p {
     max-width: 1050px;
     margin: 45px auto;
     padding: 15px;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
     gap: 22px;
 }
 
@@ -39,7 +43,10 @@ header p {
     background-color: white;
     padding: 25px;
     border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+
     min-height: 190px;
 }
 
@@ -59,6 +66,10 @@ header p {
     margin-top: 18px;
 }
 
+/* ==========================
+   ESTADOS GENERALES
+========================== */
+
 .detectado {
     color: #d97706;
 }
@@ -67,19 +78,9 @@ header p {
     color: #16834a;
 }
 
-.conectado {
-    color: #16834a;
-    font-weight: bold;
-}
-
-.desconectado {
-    color: #d32f2f;
-    font-weight: bold;
-}
-
-/* =========================
-   ESTADO DE ALERTAS
-========================= */
+/* ==========================
+   ALERTAS
+========================== */
 
 .alerta-normal {
     color: #16834a;
@@ -91,81 +92,85 @@ header p {
 
 .alerta-critica {
     color: #d32f2f;
-    animation: parpadeo 1s infinite;
 }
 
-/* Efecto visual para alerta crítica */
-@keyframes parpadeo {
-    50% {
-        opacity: 0.5;
-    }
-}
+/* ==========================
+   CONEXIÓN
+========================== */
 
-footer {
-    text-align: center;
-    padding: 30px 15px;
-    color: #64748b;
-}
-
-/* CONTROLES DE ILUMINACIÓN */
-.controles-luz {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.controles-luz button {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
+.conectado {
+    color: #16834a;
     font-weight: bold;
 }
 
-#btnEncender {
+.desconectado {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* ==========================
+   BOTONES CONTROL REMOTO
+========================== */
+
+.botones-control {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.botones-control button {
+    border: none;
+    border-radius: 8px;
+
+    padding: 12px 22px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.boton-encender {
     background-color: #16834a;
     color: white;
 }
 
-footer {
-    text-align: center;
-    padding: 30px 15px;
-    color: #64748b;
-}
-
-/* CONTROLES DE ILUMINACIÓN */
-.controles-luz {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.controles-luz button {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-#btnEncender {
-    background-color: #16834a;
-    color: white;
-}
-
-#btnApagar {
+.boton-apagar {
     background-color: #d32f2f;
     color: white;
 }
 
+.botones-control button:hover {
+    opacity: 0.85;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #ffffff;
+}
+
+/* ==========================
+   CELULAR
+========================== */
+
 @media (max-width: 600px) {
+
     header h1 {
         font-size: 26px;
     }
 
     .contenedor {
         margin: 20px auto;
+    }
+
+    .botones-control {
+        gap: 15px;
+        flex-wrap: wrap;
     }
 }
